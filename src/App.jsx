@@ -1,4 +1,5 @@
 
+
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./Home";
@@ -7,6 +8,7 @@ import Cart from "./Cart";
 import Contact from "./Contact";
 import ProductDetail from "./ProductDetail";
 import ProductsFromAPI from "./ProductsFromAPI";
+import AddProduct from "./AddProduct";
 import { CartProvider } from "./CartContext";
 
 function App(){
@@ -21,6 +23,7 @@ function App(){
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/api-test" element={<ProductsFromAPI/>}/>
+          <Route path="/add-product" element={<AddProduct/>}/>
         </Routes>
       </BrowserRouter>
     </CartProvider>

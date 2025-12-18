@@ -24,52 +24,38 @@ function ProductDetail() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
-  const handleQuantityChange = (e) => {
-    const value = parseInt(e.target.value, 10);
-    if (value > 0) setQuantity(value);
-  };
-
   return (
-    <div className="product-detail-container">
-      <div className="product-detail">
+    <div className="product-detail-wrapper">
+      <div className="product-detail-container">
         <div className="product-detail-image">
           <img src={product.image} alt={product.name} />
         </div>
         <div className="product-detail-info">
+          <span className="detail-category">{product.category}</span>
           <h1>{product.name}</h1>
-          <p className="product-detail-price">₹{product.price.toLocaleString()}</p>
-          <p className="product-detail-description">{product.description}</p>
+          <p className="detail-price">₹{product.price.toLocaleString()}</p>
+          <p className="detail-description">{product.description}</p>
           
-          <div className="quantity-selector">
-            <label htmlFor="quantity">Quantity:</label>
-            <select id="quantity" value={quantity} onChange={handleQuantityChange}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
+          <div className="qty-section">
+            <label>Qty</label>
+            <div className="qty-controls">
+              <button onClick={() => quantity > 1 && setQuantity(quantity - 1)}>−</button>
+              <span>{quantity}</span>
+              <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            </div>
           </div>
 
-          <button
-            className="add-to-cart-btn"
-            onClick={handleAddToCart}
-          >
+          <button className="cart-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
 
           {addedToCart && (
-            <p className="success-message">✓ Added to cart successfully!</p>
+            <p className="cart-success">Added ✓</p>
           )}
 
-          <div className="product-details-features">
-            <h3>Why Choose This?</h3>
-            <ul>
-              <li>100% Authentic Product</li>
-              <li>Free Shipping on Orders Above ₹500</li>
-              <li>Easy 30-Day Returns</li>
-              <li>24/7 Customer Support</li>
-            </ul>
+          <div className="simple-info">
+            <span>✓ Free shipping over ₹500</span>
+            <span>✓ 30-day returns</span>
           </div>
         </div>
       </div>

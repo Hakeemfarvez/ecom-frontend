@@ -14,6 +14,7 @@ function Navbar() {
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/products">Products</Link></li>
+        <li><Link to="/add-product">Add Product</Link></li>
         <li>
           <Link to="/cart">
             Cart {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
